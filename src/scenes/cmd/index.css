@@ -1,3 +1,9 @@
+:root {
+    --header-size: 25px;
+    --cmd-height: 80vh;
+    --cmd-width: 70vw;
+}
+
 .background {
     background: #5d0399;
     height: 100vh;
@@ -7,29 +13,86 @@
 
 .cmd-container {
     display:inline-block;
-    height: 80vh;
-    margin: 10vh 0;
-    width: 70vw;
+    height: var(--cmd-height);
+    margin: calc(calc(100vh - var(--cmd-height)) / 2) 0;
+    width: var(--cmd-width);
     vertical-align: middle;
     position: relative;
 }
 
 .cmd {
     background: #303030;
-    border-top: solid 20px #9c9c9c;
+    border-top: solid var(--header-size) #9c9c9c;
     border-radius: 10px;
+    box-sizing: border-box;
 }
 
+.box {
+    flex: 1;
+}
 .cmd-button {
     border-radius: 100px;
     width: 12px;
     height: 12px;
     margin: 0 10px;
+    margin-top: 7px;
     float: right;
     background: solid 10px;
 }
 
-.cmd-button-container {
-    margin-top: -15px;
+.cmd-button:hover {
+    cursor: pointer;
+}
+
+.cmd-button-red {
+    background-color: #F6634F;
+}
+
+.cmd-button-red:hover {
+    background-color: #ed3d26;
+}
+
+.cmd-button-orange {
+    background-color: #FFBB2F;
+}
+
+.cmd-button-orange:hover {
+    background-color: #ff9e2f;
+}
+
+.cmd-button-green {
+    background-color: #1CCC42;
+}
+
+.cmd-button-green:hover {
+    background-color: #0bba0e;
+}
+
+.cmd-top-container {
+    margin-top: calc(-1 * var(--header-size));
+    line-height: var(--header-size);
+    flex-direction: row;
+    display: flex;
+}
+
+.cmd-content-container {
+    display: flex;
+    flex-direction: column-reverse;
+    height: 100%;
     width: 100%;
+    text-align: left;
+    overflow: hidden;
+}
+
+.cmd-content {
+    margin: 0 10px;
+    color: #e3e3e3;
+}
+
+.cmd-content-first {
+    margin-bottom: 20px;
+}
+
+.cmd-content-last {
+    margin-top: 20px;
 }
