@@ -2,6 +2,7 @@
     --header-size: 25px;
     --cmd-height: 80vh;
     --cmd-width: 70vw;
+    --cmd-content-color: #e3e3e3;
 }
 
 .background {
@@ -86,7 +87,7 @@
 
 .cmd-content {
     margin: 0 10px;
-    color: #e3e3e3;
+    color: var(--cmd-content-color);
 }
 
 .cmd-content-first {
@@ -95,4 +96,32 @@
 
 .cmd-content-last {
     margin-top: 20px;
+}
+
+.cmd-input-container {
+    margin-left: 10px;
+}
+
+.cmd-input {
+    border:none;
+    background-image:none;
+    background-color:transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+
+    font-size: 1em;
+    color: var(--cmd-content-color);
+    caret-color: transparent;
+}
+
+.cmd-input:focus {
+    outline: none;
+}
+
+.input-carret {
+    background-color: white;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
 }
