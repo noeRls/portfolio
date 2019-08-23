@@ -1,0 +1,21 @@
+extends: [
+  airbnb,
+  plugin:react/recommended
+]
+parser: 'babel-eslint'
+parserOptions:
+  ecmaVersion: 2018
+rules: {
+  no-underscore-dangle: off,
+  no-console: off,
+  no-param-reassign: off,
+  import/no-named-as-default-member: off,
+  arrow-parens: off,
+  import/no-named-as-default: off,
+  react/prop-types: off,
+  react/jsx-filename-extension: off,
+  react/forbid-prop-types: off,
+  react/prefer-stateless-function: off,
+}
+globals:
+  window: readonly
