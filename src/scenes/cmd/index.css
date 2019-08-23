@@ -109,10 +109,10 @@
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
+    caret-color: transparent;
 
     font-size: 1em;
     color: var(--cmd-content-color);
-    caret-color: transparent;
 }
 
 .cmd-input:focus {
@@ -120,8 +120,16 @@
 }
 
 .input-carret {
-    background-color: white;
-    width: 10px;
-    height: 10px;
+    margin-bottom: -3px;
+    width: 7px;
+    height: 1em;
     display: inline-block;
+}
+
+.input-carret-blur {
+    border: solid var(--cmd-content-color) 1px;
+}
+
+.input-carret-focus {
+    background-color: var(--cmd-content-color);
 }

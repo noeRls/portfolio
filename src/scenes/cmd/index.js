@@ -3,19 +3,21 @@
 import React from 'react';
 import './index.css';
 import AutosizeInput from 'react-input-autosize';
+import cl from 'classnames';
 
 class CMD extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       input: 'ls -la',
+      isFocus: false,
     };
   }
 
   inputOnChange = e => this.setState({ input: e.target.value });
 
   render() {
-    const { input } = this.state;
+    const { input, isFocus } = this.state;
     return (
       <div
         className="background"
@@ -34,7 +36,8 @@ class CMD extends React.Component {
           </div>
           <div
             className="cmd-content-container"
-            onClick={() => this.inputRef.focus()}
+            onClick={async () => { this.inputRef.focus(); this.setState({ isFocus: true }); }}
+            onBlur={async () => { this.setState({ isFocus: false }); }}
           >
             <div className="cmd-content cmd-content-first">
               [noe@noe-pc ~]$
@@ -45,7 +48,7 @@ class CMD extends React.Component {
                 onChange={this.inputOnChange}
                 value={input}
               />
-              <span className="input-carret" />
+              <span className={cl('input-carret', isFocus ? 'input-carret-focus' : 'input-carret-blur')} />
             </div>
             <div className="cmd-content">
               2
