@@ -78,4 +78,6 @@ function cd(dir) {
   return null;
 }
 
-export { cd, getDirectory, getPath, setDirectory };
+export {
+  cd, getDirectory, getPath, setDirectory,
+};

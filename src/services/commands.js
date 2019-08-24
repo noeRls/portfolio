@@ -8,6 +8,10 @@ import Ls from '../component/Ls';
 const ls = (dir, cmd, addToStack) => {
   const path = cmd && cmd.length > 0 && cmd[cmd.length - 1][0] !== '-' ? cmd[cmd.length - 1] : null;
   const info = getPath(path, true);
+  if (!info) {
+    addToStack(<span>{`Invalid path '${path}'`}</span>);
+    return;
+  }
   let files = [];
   let dirs = [];
   if (info.file) {
@@ -17,7 +21,6 @@ const ls = (dir, cmd, addToStack) => {
     files = info.files;
   }
   addToStack(<Ls files={files} dirs={dirs} />);
-  return info;
 };
 
 const commands = [
