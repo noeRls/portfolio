@@ -4,6 +4,11 @@ import React from 'react';
 import './index.css';
 import AutosizeInput from 'react-input-autosize';
 import cl from 'classnames';
+import { getDirectory } from '../../services/directory';
+import { getCmdError } from '../../services/cmdTools';
+import commands from '../../services/commands';
+
+let unique = 0;
 
 class CMD extends React.Component {
   constructor(props) {
@@ -12,6 +17,7 @@ class CMD extends React.Component {
       input: 'ls -la',
       isFocus: false,
       typing: false,
+      stack: [],
     };
   }
 
@@ -32,8 +38,47 @@ class CMD extends React.Component {
     this.typingTimeout = setTimeout(() => this.setState({ typing: false }), 1000);
   }
 
-  render() {
+  addToStack = (element) => {
+    const { stack } = this.state;
+    unique += 1;
+    const finalElement = (
+      <div className="cmd-content" key={unique}>
+        {element}
+      </div>
+    );
+    this.setState({ stack: [finalElement, ...stack] });
+  }
+
+  getPrompt = () => `[noe@noe-pc ${getDirectory().name}]$`;
+
+  executeCmd = (cmd) => {
+    const error = getCmdError(cmd);
+    if (error) {
+      this.addToStack(<span>{error}</span>);
+      return;
+    }
+    const [cmdName, ...args] = cmd.split(' ');
+    const info = commands.find(c => c.name === cmdName);
+    info.fct(getDirectory(), args, this.addToStack);
+  }
+
+  handleCmd = e => {
+    e.preventDefault();
+    const oldPrompt = this.getPrompt();
     const { input } = this.state;
+    this.setState({ input: '' });
+    this.addToStack((
+      <div>
+        {oldPrompt}
+        &nbsp;&nbsp;
+        {input}
+      </div>
+    ));
+    if (input && input.length > 1) this.executeCmd(input);
+  }
+
+  render() {
+    const { input, stack } = this.state;
     return (
       <div
         className="background"
@@ -56,22 +101,19 @@ class CMD extends React.Component {
             onBlur={async () => { this.setState({ isFocus: false }); }}
           >
             <div className="cmd-content cmd-content-first">
-              [noe@noe-pc ~]$
-              <AutosizeInput
-                ref={ref => { this.inputRef = ref; }}
-                inputClassName="cmd-input"
-                className="cmd-input-container"
-                onChange={this.inputOnChange}
-                value={input}
-              />
-              <span className={this.getCarpetClassName()} />
+              {this.getPrompt()}
+              &nbsp;&nbsp;
+              <form onSubmit={this.handleCmd} className="input-form">
+                <AutosizeInput
+                  ref={ref => { this.inputRef = ref; }}
+                  inputClassName="cmd-input"
+                  onChange={this.inputOnChange}
+                  value={input}
+                />
+                <span className={this.getCarpetClassName()} />
+              </form>
             </div>
-            <div className="cmd-content">
-              2
-            </div>
-            <div className="cmd-content">
-              3
-            </div>
+            {stack}
           </div>
         </div>
       </div>

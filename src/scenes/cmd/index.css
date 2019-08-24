@@ -99,10 +99,6 @@
     margin-top: 20px;
 }
 
-.cmd-input-container {
-    margin-left: 10px;
-}
-
 .cmd-input {
     border:none;
     background-image:none;
@@ -118,6 +114,10 @@
 
 .cmd-input:focus {
     outline: none;
+}
+
+.input-form {
+    display: inline-block
 }
 
 .input-carret {
@@ -150,7 +150,6 @@
     animation-name: carret-blink;
     animation-direction: alternate;
     animation-timing-function: cubic-bezier(0.85, 0.1, 0.68, 0.22);;
-    /**/
 }
 
 .input-carret-focus-typing  {
