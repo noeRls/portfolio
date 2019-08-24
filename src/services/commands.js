@@ -35,7 +35,7 @@ const commands = [
   },
   {
     name: 'cd',
-    desc: 'change the working directory - \'cd $folder\'',
+    desc: 'change the working directory \'cd $folder\'',
     fct: (_, cmd, addToStack) => {
       const error = cd(cmd && cmd[0]);
       if (error) addToStack(<span>{error}</span>);
@@ -45,6 +45,10 @@ const commands = [
     name: 'ls',
     desc: 'list files / project',
     fct: ls,
+  },
+  {
+    name: 'clear',
+    desc: 'clear the terminal',
   },
 ];
 

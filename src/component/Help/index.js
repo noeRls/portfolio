@@ -1,29 +1,32 @@
 import React from 'react';
-import './index.css';
+import s from './index.module.css';
+
+require('numbermap')();
 
 const Help = (props) => {
   const { commands } = props;
+  const maxNameLen = commands.reduce((acc, cmd) => {
+    if (cmd.name.length > acc) return cmd.name.length;
+    return acc;
+  }, 0);
   return (
-    <div className="container">
-      <div className="sub-container name-container">
-        {commands.map(cmd => (
-          <div key={cmd.name}>
+    <div>
+      {commands.map(cmd => (
+        <div key={cmd.name} className={s.container}>
+          <div className={s['name-container']}>
             <span>
+              {(maxNameLen - cmd.name.length).map(n => <span key={n}>&nbsp;</span>)}
               {cmd.name}
-              &nbsp;-&nbsp;
             </span>
           </div>
-        ))}
-      </div>
-      <div className="sub-container">
-        {commands.map(cmd => (
-          <div key={cmd.name}>
+          <div className={s['desc-container']}>
             <span>
+              &nbsp;
               {cmd.desc}
             </span>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   );
 };

@@ -41,7 +41,6 @@ class CMD extends React.Component {
   addToStack = (element) => new Promise((res) => {
     const { stack } = this.state;
     unique += 1;
-    console.log(`adding to stack - unique ${unique}`);
     const finalElement = (
       <div className="cmd-content" key={unique}>
         {element}
@@ -59,8 +58,12 @@ class CMD extends React.Component {
       return;
     }
     const [cmdName, ...args] = cmd.split(' ');
-    const info = commands.find(c => c.name === cmdName);
-    info.fct(getDirectory(), args, this.addToStack);
+    if (cmdName === 'clear') {
+      this.setState({ stack: [] });
+    } else {
+      const info = commands.find(c => c.name === cmdName);
+      info.fct(getDirectory(), args, this.addToStack);
+    }
   }
 
   handleCmd = async e => {
