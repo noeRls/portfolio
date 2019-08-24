@@ -1,22 +1,22 @@
 const tree = {
   root: {
-    dirs: {
-      projects: { name: 'projects', files: { portfolio: { name: 'portfolio', desc: 'this website' } } },
-      skills: { name: 'skills' },
-      experiances: { name: 'experiances' },
-      certifications: { name: 'certifications' },
-      me: { name: 'me' },
-      contacts: { name: 'contacts' },
-    },
+    dirs: [
+      { name: 'projects', files: [{ name: 'portfolio', desc: 'this website' }] },
+      { name: 'skills' },
+      { name: 'experiances' },
+      { name: 'certifications' },
+      { name: 'me' },
+      { name: 'contacts' },
+    ],
     name: '~',
   },
 };
 
 function addInfo(base) {
   const { files, dirs } = base;
-  if (files) Object.keys(files).forEach(fname => { files[fname].file = true; });
+  if (files) files.forEach(f => { f.file = true; });
   if (dirs) {
-    Object.keys(dirs).forEach(dname => { dirs[dname].dir = true; addInfo(dirs[dname]); });
+    dirs.forEach(d => { d.dir = true; addInfo(d); });
   }
 }
 addInfo(tree.root);
@@ -28,23 +28,25 @@ function findparent(base, child) {
   if (!base.dirs) return null;
   if (base.dirs.some(dir => dir === child)) return base;
   // eslint-disable-next-line
-  for (const [, value] of Object.entries(base.dirs)) {
-    const parent = findparent(value);
+  for (let i = 0; i < base.dirs.length; i++) {
+    const parent = findparent(base.dirs[i]);
     if (parent) return parent;
   }
   return null;
 }
 
 const getDirectory = () => currentDir;
+const setDirectory = (dir) => { currentDir = dir; };
 
 function cdone(path, cdir) {
   if (path === '.') return cdir;
   if (path === '..') {
-    const parent = findparent(tree.root);
+    const parent = findparent(tree.root, cdir);
     if (!parent) return cdir;
     return parent;
   }
-  const newDir = currentDir.dirs[path];
+  if (!cdir.dirs) return null;
+  const newDir = cdir.dirs.find(d => d.name === path);
   if (!newDir) return null;
   return newDir;
 }
@@ -57,7 +59,7 @@ function getPath(path, allowFile) {
     tmpDir = cdone(path[i], tmpDir);
     if (!tmpDir) {
       if (path[i].files && allowFile) {
-        return path[i].files.find((_, f) => f === path[i]);
+        return path[i].files.find(f => f.name === path[i]);
       }
       return null;
     }
@@ -76,4 +78,4 @@ function cd(dir) {
   return null;
 }
 
-export { cd, getDirectory, getPath };
+export { cd, getDirectory, getPath, setDirectory };

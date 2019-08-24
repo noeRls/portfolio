@@ -38,16 +38,17 @@ class CMD extends React.Component {
     this.typingTimeout = setTimeout(() => this.setState({ typing: false }), 1000);
   }
 
-  addToStack = (element) => {
+  addToStack = (element) => new Promise((res) => {
     const { stack } = this.state;
     unique += 1;
+    console.log(`adding to stack - unique ${unique}`);
     const finalElement = (
       <div className="cmd-content" key={unique}>
         {element}
       </div>
     );
-    this.setState({ stack: [finalElement, ...stack] });
-  }
+    this.setState({ stack: [finalElement, ...stack] }, res);
+  });
 
   getPrompt = () => `[noe@noe-pc ${getDirectory().name}]$`;
 
@@ -62,19 +63,21 @@ class CMD extends React.Component {
     info.fct(getDirectory(), args, this.addToStack);
   }
 
-  handleCmd = e => {
+  handleCmd = async e => {
     e.preventDefault();
     const oldPrompt = this.getPrompt();
     const { input } = this.state;
     this.setState({ input: '' });
-    this.addToStack((
+    await this.addToStack((
       <div>
         {oldPrompt}
         &nbsp;&nbsp;
         {input}
       </div>
     ));
-    if (input && input.length > 1) this.executeCmd(input);
+    if (!input || input.length === 0) return;
+    await this.executeCmd(input);
+    this.setState({ input: '' });
   }
 
   render() {

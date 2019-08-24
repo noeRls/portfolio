@@ -1,12 +1,22 @@
 import React from 'react';
 import { getPath, cd } from './directory';
 import Help from '../component/Help';
+import Ls from '../component/Ls';
 
 // (dir, cmd, addToStack)
 
 const ls = (dir, cmd, addToStack) => {
   const path = cmd && cmd.length > 0 && cmd[cmd.length - 1][0] !== '-' ? cmd[cmd.length - 1] : null;
   const info = getPath(path, true);
+  let files = [];
+  let dirs = [];
+  if (info.file) {
+    files = [info];
+  } else {
+    dirs = info.dirs;
+    files = info.files;
+  }
+  addToStack(<Ls files={files} dirs={dirs} />);
   return info;
 };
 
