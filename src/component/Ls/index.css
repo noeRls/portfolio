@@ -28,6 +28,10 @@
 	color: #02c2c5;
 }
 
+.link {
+	text-decoration: none;
+}
+
 .title {
 	text-align: right;
 }

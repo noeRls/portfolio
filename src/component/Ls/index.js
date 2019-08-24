@@ -17,11 +17,20 @@ const Ls = (props) => {
     </span>
   );
 
-  const getFileSpan = (f) => (
-    <span className="content file" key={f.name}>
-      {f.name}
-    </span>
-  );
+  const getFileSpan = (f) => {
+    if (f.link) {
+      return (
+        <a className="content file link" key={f.name} href={f.link} target="_blank" rel="noopener noreferrer">
+          {f.name}
+        </a>
+      );
+    }
+    return (
+      <span className="content file" key={f.name}>
+        {f.name}
+      </span>
+    );
+  };
 
   return (
     <div>
@@ -53,11 +62,11 @@ const Ls = (props) => {
           </div>
         </div>
       ) : (
-        <div>
-          {dirs.map(d => getDirSpan(d))}
-          {files.map(f => getFileSpan(f))}
-        </div>
-      )}
+          <div>
+            {dirs.map(d => getDirSpan(d))}
+            {files.map(f => getFileSpan(f))}
+          </div>
+        )}
     </div>
   );
 };

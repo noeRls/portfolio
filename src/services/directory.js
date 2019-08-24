@@ -6,7 +6,7 @@ const tree = {
         name: 'projects',
         desc: 'personal projects and the ones I\'m contributing',
         files: [
-          { name: 'portfolio', desc: 'this website' },
+          { name: 'portfolio', desc: 'this website', link: 'https://noerls.com' },
         ],
       },
       {
