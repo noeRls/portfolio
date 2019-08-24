@@ -60,11 +60,11 @@ const Ls = (props) => {
           ))}
         </div>
       ) : (
-          <div className={style['pocket-container']}>
-            {dirs.map(d => getDirSpan(d))}
-            {files.map(f => getFileSpan(f))}
-          </div>
-        )}
+        <div className={style['pocket-container']}>
+          {dirs.map(d => getDirSpan(d))}
+          {files.map(f => getFileSpan(f))}
+        </div>
+      )}
     </div>
   );
 };

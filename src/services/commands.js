@@ -43,7 +43,7 @@ const commands = [
   },
   {
     name: 'ls',
-    desc: 'list files / project',
+    desc: 'list files and directory. You can use \'ls -l\' to have details',
     fct: ls,
   },
   {

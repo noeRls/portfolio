@@ -6,28 +6,109 @@ const tree = {
         name: 'projects',
         desc: 'personal projects and the ones I\'m contributing',
         files: [
-          { name: 'portfolio', desc: 'this website', link: 'https://noerls.com' },
+          {
+            name: 'portfolio',
+            desc: 'this website',
+            link: 'https://noerls.com',
+          },
+          {
+            name: 'real-time-amenagment',
+            desc: 'Use augmented reality to positionate and integrate virtual furniture into your space',
+            link: 'https://github.com/Yooooomi/RealTimeAmenagement',
+          },
+          {
+            name: 'authentication-template-NodeJS',
+            desc: 'Simple template to start a NodeJS backend project with Mongodb.',
+            link: 'https://github.com/noeRls/Authentication-template-NodeJS',
+          },
+          {
+            name: 'ethereum-wallet-seeker',
+            desc: 'seeker of ethereum wallet with ether',
+            link: 'https://github.com/noeRls/ethereumWalletSeeker',
+          },
+          {
+            name: 'uber-bot',
+            desc: 'Bot that analyse uber price to evaluate if there is a gap depending of gender and ethnic',
+            link: 'https://github.com/noeRls/uber_bot',
+          },
+          {
+            name: 'corewar',
+            desc: 'Epitech project, compiler and interpreter of bytecode in C',
+            link: 'https://github.com/noeRls/Corewar',
+          },
         ],
       },
       {
         name: 'skills',
         desc: 'language and technology that I\'m mastering',
+        files: [
+          { name: 'NodeJS' },
+          { name: 'ReactJS' },
+          { name: 'Python' },
+          { name: 'MongoDB' },
+          { name: 'Blockchain', desc: 'I\'m an ethereum enthusiastic' },
+          { name: 'Solidity' },
+          { name: 'C++' },
+          { name: 'C' },
+          { name: 'HTML5' },
+          { name: 'CSS' },
+        ],
       },
       {
         name: 'experiances',
         desc: 'professional experiances',
+        files: [
+          {
+            name: 'Skillz',
+            desc: 'I\'m working as a blockchain developer on a platform that auto deploy nodes in a consortium.',
+            label: 'june 2018 - now',
+            link: 'http://skillz.io',
+          },
+          {
+            name: 'PoC',
+            desc: 'I\'m a member at PoC. It is a research and development association. We work on domains like IA, AR, Health, Security, Blockchain.',
+            label: 'feb 2018 - now',
+            link: 'https://www.linkedin.com/company/pocfr/about/',
+          },
+          {
+            name: 'Farsky-Interactive',
+            desc: 'I made an internship in this independent gaming studio',
+            label: 'june 2015',
+            link: 'https://www.farskyinteractive.com/',
+          },
+        ],
       },
       {
         name: 'formation',
         desc: 'diplomas and certifications',
+        files: [
+          {
+            name: 'Epitech',
+            desc: 'Epitech is an informatic school known for it\'s innovative learning method. Master in Information of technology, certification level 1 (highest level)',
+            label: '3.80 GPA',
+            link: 'https://www.epitech.eu/',
+          },
+          {
+            name: 'Bac-Scientific',
+            label: 'Mention: \'Assez bien\'',
+          },
+        ],
       },
       {
         name: 'me',
-        desc: 'learn more about me',
-      },
-      {
-        name: 'contacts',
-        desc: 'my github, my mail and all you need to contact me',
+        desc: 'contacts and info about me',
+        files: [
+          {
+            name: 'github',
+            label: 'noeRls',
+            link: 'https://github.com/noeRls',
+          },
+          {
+            name: 'Linkedin',
+            desc: 'Noe Rivals',
+            link: 'https://www.linkedin.com/in/noe-rivals/',
+          },
+        ],
       },
     ],
   },

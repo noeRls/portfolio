@@ -33,6 +33,10 @@
 	text-decoration: none;
 }
 
+.link:hover {
+	color: #018285
+}
+
 .title {
 	text-align: right;
 }
