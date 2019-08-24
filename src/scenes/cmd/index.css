@@ -3,6 +3,7 @@
     --cmd-height: 80vh;
     --cmd-width: 70vw;
     --cmd-content-color: #e3e3e3;
+    --cmd-background-color: #303030;
 }
 
 .background {
@@ -22,7 +23,7 @@
 }
 
 .cmd {
-    background: #303030;
+    background: var(--cmd-background-color);
     border-top: solid var(--header-size) #9c9c9c;
     border-radius: 10px;
     box-sizing: border-box;
@@ -130,6 +131,29 @@
     border: solid var(--cmd-content-color) 1px;
 }
 
-.input-carret-focus {
+@keyframes carret-blink {
+    from {
+        border: solid var(--cmd-content-color) 1px;
+        background-color: var(--cmd-content-color);
+    }
+
+    to {
+        border: solid var(--cmd-background-color) 1px;
+        background-color: var(--cmd-background-color);
+
+    }
+}
+
+.input-carret-focus-ide {
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-name: carret-blink;
+    animation-direction: alternate;
+    animation-timing-function: cubic-bezier(0.85, 0.1, 0.68, 0.22);;
+    /**/
+}
+
+.input-carret-focus-typing  {
+    border: solid var(--cmd-content-color) 1px;
     background-color: var(--cmd-content-color);
 }

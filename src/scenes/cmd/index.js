@@ -11,13 +11,29 @@ class CMD extends React.Component {
     this.state = {
       input: 'ls -la',
       isFocus: false,
+      typing: false,
     };
   }
 
-  inputOnChange = e => this.setState({ input: e.target.value });
+  getCarpetClassName = () => {
+    const { isFocus, typing } = this.state;
+    let special = '';
+    if (isFocus) {
+      special = typing ? 'input-carret-focus-typing' : 'input-carret-focus-ide';
+    } else {
+      special = 'input-carret-blur';
+    }
+    return cl(special, 'input-carret');
+  }
+
+  inputOnChange = e => {
+    this.setState({ input: e.target.value, typing: true });
+    if (this.typingTimeout) clearTimeout(this.typingTimeout);
+    this.typingTimeout = setTimeout(() => this.setState({ typing: false }), 1000);
+  }
 
   render() {
-    const { input, isFocus } = this.state;
+    const { input } = this.state;
     return (
       <div
         className="background"
@@ -48,7 +64,7 @@ class CMD extends React.Component {
                 onChange={this.inputOnChange}
                 value={input}
               />
-              <span className={cl('input-carret', isFocus ? 'input-carret-focus' : 'input-carret-blur')} />
+              <span className={this.getCarpetClassName()} />
             </div>
             <div className="cmd-content">
               2
