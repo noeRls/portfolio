@@ -12,6 +12,8 @@ const ls = (dir, cmd, addToStack) => {
     addToStack(<span>{`Invalid path '${path}'`}</span>);
     return;
   }
+  let expanded = false;
+  if (cmd.length > 0 && cmd[0][0] === '-' && cmd[0].includes('l')) expanded = true;
   let files = [];
   let dirs = [];
   if (info.file) {
@@ -20,7 +22,7 @@ const ls = (dir, cmd, addToStack) => {
     dirs = info.dirs;
     files = info.files;
   }
-  addToStack(<Ls files={files} dirs={dirs} />);
+  addToStack(<Ls files={files} dirs={dirs} expanded={expanded} />);
 };
 
 const commands = [

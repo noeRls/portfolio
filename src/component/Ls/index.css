@@ -1,3 +1,13 @@
+.container {
+	display: flex;
+	flex-direction: row;
+}
+
+.sub-container {
+	display: flex;
+	flex-direction: column;
+}
+
 .content {
     margin-right: 10px;
 }
@@ -11,9 +21,18 @@
 	cursor: pointer;
 	outline: inherit;
 
-    color: #4267B2;
+    color: rgb(78, 122, 209);
 }
 
 .file {
+	color: #02c2c5;
+}
 
+.title {
+	text-align: right;
+}
+
+.desc {
+	text-align: left;
+	color: #c0c0c0;
 }

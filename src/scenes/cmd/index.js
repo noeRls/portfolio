@@ -14,7 +14,7 @@ class CMD extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      input: 'ls -la',
+      input: '',
       isFocus: false,
       typing: false,
       stack: [],
@@ -71,7 +71,7 @@ class CMD extends React.Component {
     await this.addToStack((
       <div>
         {oldPrompt}
-        &nbsp;&nbsp;
+        &nbsp;
         {input}
       </div>
     ));
@@ -105,7 +105,7 @@ class CMD extends React.Component {
           >
             <div className="cmd-content cmd-content-first">
               {this.getPrompt()}
-              &nbsp;&nbsp;
+              &nbsp;
               <form onSubmit={this.handleCmd} className="input-form">
                 <AutosizeInput
                   ref={ref => { this.inputRef = ref; }}

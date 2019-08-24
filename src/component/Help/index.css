@@ -1,0 +1,13 @@
+.sub-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.name-container {
+    text-align: right;
+}
+
+.container {
+    display: flex;
+    flex-direction: row
+}

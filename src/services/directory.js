@@ -1,14 +1,35 @@
 const tree = {
   root: {
-    dirs: [
-      { name: 'projects', files: [{ name: 'portfolio', desc: 'this website' }] },
-      { name: 'skills' },
-      { name: 'experiances' },
-      { name: 'certifications' },
-      { name: 'me' },
-      { name: 'contacts' },
-    ],
     name: '~',
+    dirs: [
+      {
+        name: 'projects',
+        desc: 'personal projects and the ones I\'m contributing',
+        files: [
+          { name: 'portfolio', desc: 'this website' },
+        ],
+      },
+      {
+        name: 'skills',
+        desc: 'language and technology that I\'m mastering',
+      },
+      {
+        name: 'experiances',
+        desc: 'professional experiances',
+      },
+      {
+        name: 'formation',
+        desc: 'diplomas and certifications',
+      },
+      {
+        name: 'me',
+        desc: 'learn more about me',
+      },
+      {
+        name: 'contacts',
+        desc: 'my github, my mail and all you need to contact me',
+      },
+    ],
   },
 };
 

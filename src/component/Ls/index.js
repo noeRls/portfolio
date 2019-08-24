@@ -6,22 +6,58 @@ import { setDirectory } from '../../services/directory';
 
 const Ls = (props) => {
   const { files, dirs, expanded } = props;
+
+  const getDirSpan = (d) => (
+    <span
+      onClick={() => setDirectory(d)}
+      className="content dir"
+      key={d.name}
+    >
+      {d.name}
+    </span>
+  );
+
+  const getFileSpan = (f) => (
+    <span className="content file" key={f.name}>
+      {f.name}
+    </span>
+  );
+
   return (
     <div>
-      {dirs.map(d => (
-        <span
-          onClick={() => setDirectory(d)}
-          className="content dir"
-          key={d.name}
-        >
-          {d.name}
-        </span>
-      ))}
-      {files.map(d => (
-        <span className="content file" key={d.name}>
-          {d.name}
-        </span>
-      ))}
+      {expanded ? (
+        <div className="container">
+          <div>
+            {[...dirs, ...files].map(info => (
+              <div
+                className="sub-container"
+                key={info.name}
+              >
+                <div className="title">
+                  {info.file ? getFileSpan(info) : getDirSpan(info)}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div>
+            {[...dirs, ...files].map(info => (
+              <div
+                className="sub-container"
+                key={info.name}
+              >
+                <div className="desc">
+                  {info.desc}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div>
+          {dirs.map(d => getDirSpan(d))}
+          {files.map(f => getFileSpan(f))}
+        </div>
+      )}
     </div>
   );
 };
@@ -29,6 +65,7 @@ const Ls = (props) => {
 Ls.defaultProps = {
   dirs: [],
   files: [],
+  expanded: false,
 };
 
 export default Ls;
