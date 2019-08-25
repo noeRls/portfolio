@@ -22,12 +22,18 @@ class Ls extends React.Component {
   }
 
   componentDidMount() {
-    this.updateTitleWidth();
-    window.addEventListener('resize', this.onResize.bind(this));
+    const { expanded } = this.props;
+    if (expanded) {
+      this.updateTitleWidth();
+      window.addEventListener('resize', this.onResize.bind(this));
+    }
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.onResize.bind(this));
+    const { expanded } = this.props;
+    if (expanded) {
+      window.removeEventListener('resize', this.onResize.bind(this));
+    }
   }
 
   onResize = () => {
@@ -91,9 +97,11 @@ class Ls extends React.Component {
                 <div className={style.desc}>
                   {info.desc}
                 </div>
-                <div className={style.label}>
-                  {info.label}
-                </div>
+                {Boolean(info.label) && (
+                  <div className={style.label}>
+                    {info.label}
+                  </div>
+                )}
               </div>
             ))}
           </div>

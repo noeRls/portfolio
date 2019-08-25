@@ -61,13 +61,13 @@ const tree = {
           {
             name: 'Skillz',
             desc: 'I\'m working as a blockchain developer on a platform that auto deploy nodes in a consortium.',
-            label: 'june 2018 - now',
+            label: 'june 2018 to now',
             link: 'http://skillz.io',
           },
           {
             name: 'PoC',
             desc: 'I\'m a member at PoC. It is a research and development association. We work on domains like IA, AR, Health, Security, Blockchain.',
-            label: 'feb 2018 - now',
+            label: 'feb 2018 to now',
             link: 'https://www.linkedin.com/company/pocfr/about/',
           },
           {
@@ -100,7 +100,7 @@ const tree = {
         files: [
           {
             name: 'github',
-            label: 'noeRls',
+            desc: 'noeRls',
             link: 'https://github.com/noeRls',
           },
           {

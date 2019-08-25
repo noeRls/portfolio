@@ -47,7 +47,7 @@
 }
 
 .label {
-	color: #00DB15;
+	color: rgb(2, 185, 20);
 	flex-grow: 1;
 	text-align: right;
 	flex-basis: 200px;
