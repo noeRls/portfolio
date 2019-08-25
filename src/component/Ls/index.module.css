@@ -45,3 +45,10 @@
 	text-align: left;
 	color: var(--cmd-desc-color);
 }
+
+.label {
+	color: #00DB15;
+	flex-grow: 1;
+	text-align: right;
+	flex-basis: 200px;
+}

@@ -14,7 +14,7 @@ class CMD extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      input: '',
+      input: 'ls -l experiances',
       isFocus: false,
       typing: false,
       stack: [],

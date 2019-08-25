@@ -7,15 +7,43 @@ import { setDirectory } from '../../services/directory';
 
 require('numbermap')();
 
-const Ls = (props) => {
-  const { files, dirs, expanded } = props;
+class Ls extends React.Component {
 
-  const maxLengthName = [...dirs, ...files].reduce((acc, curr) => {
-    if (curr.name.length > acc) return curr.name.length;
-    return acc;
-  }, 0);
+  constructor(props) {
+    super(props);
+    const nbElement = props.dirs.length + props.files.length;
+    if (props.expanded) {
+      this.titlesRef = nbElement.map(() => React.createRef());
+      console.log(this.titlesRef);
+    }
+    this.state = {
+      maxTitleWidth: 0,
+    };
+  }
 
-  const getDirSpan = (d) => (
+  componentDidMount() {
+    this.updateTitleWidth();
+    window.addEventListener('resize', this.onResize.bind(this));
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize.bind(this));
+  }
+
+  onResize = () => {
+    this.setState({ maxTitleWidth: 0 }, this.updateTitleWidth);
+  }
+
+  updateTitleWidth = () => {
+    const maxTitleWidth = this.titlesRef.reduce((acc, ref) => {
+      const w = ref.current.offsetWidth;
+      if (w > acc) return w;
+      return acc;
+    }, 0);
+    this.setState({ maxTitleWidth });
+  }
+
+  getDirSpan = (d) => (
     <span
       onClick={() => setDirectory(d)}
       className={cl(style.content, style.dir)}
@@ -25,7 +53,7 @@ const Ls = (props) => {
     </span>
   );
 
-  const getFileSpan = (f) => {
+  getFileSpan = (f) => {
     if (f.link) {
       return (
         <a className={cl(style.content, style.file, style.link)} key={f.name} href={f.link} target="_blank" rel="noopener noreferrer">
@@ -40,34 +68,45 @@ const Ls = (props) => {
     );
   };
 
-  return (
-    <div>
-      {expanded ? (
-        <div>
-          {[...dirs, ...files].map(info => (
-            <div
-              className={style.container}
-              key={info.name}
-            >
-              <div className={style.title}>
-                {(maxLengthName - info.name.length).map(n => <span key={n}>&nbsp;</span>)}
-                {info.file ? getFileSpan(info) : getDirSpan(info)}
+  render() {
+    const { files, dirs, expanded } = this.props;
+    const { maxTitleWidth } = this.state;
+
+    return (
+      <div>
+        {expanded ? (
+          <div>
+            {[...dirs, ...files].map((info, i) => (
+              <div
+                className={style.container}
+                key={info.name}
+              >
+                <div
+                  className={style.title}
+                  ref={this.titlesRef[i]}
+                  style={{ minWidth: maxTitleWidth }}
+                >
+                  {info.file ? this.getFileSpan(info) : this.getDirSpan(info)}
+                </div>
+                <div className={style.desc}>
+                  {info.desc}
+                </div>
+                <div className={style.label}>
+                  {info.label}
+                </div>
               </div>
-              <div className={style.desc}>
-                {info.desc}
-              </div>
+            ))}
+          </div>
+        ) : (
+            <div className={style['pocket-container']}>
+              {dirs.map(d => this.getDirSpan(d))}
+              {files.map(f => this.getFileSpan(f))}
             </div>
-          ))}
-        </div>
-      ) : (
-        <div className={style['pocket-container']}>
-          {dirs.map(d => getDirSpan(d))}
-          {files.map(f => getFileSpan(f))}
-        </div>
-      )}
-    </div>
-  );
-};
+          )}
+      </div>
+    );
+  }
+}
 
 Ls.defaultProps = {
   dirs: [],
