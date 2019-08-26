@@ -58,17 +58,18 @@ class Ls extends React.Component {
     </span>
   );
 
-  getFileSpan = (f) => {
+  getFileSpan = (f, removeSpaces) => {
+    const name = removeSpaces ? f.name.replace(/ /g, '-') : f.name;
     if (f.link) {
       return (
         <a className={cl(style.content, style.file, style.link)} key={f.name} href={f.link} target="_blank" rel="noopener noreferrer">
-          {f.name}
+          {name}
         </a>
       );
     }
     return (
       <span className={cl(style.content, style.file)} key={f.name}>
-        {f.name}
+        {name}
       </span>
     );
   };
@@ -108,7 +109,7 @@ class Ls extends React.Component {
         ) : (
           <div className={style['pocket-container']}>
             {dirs.map(d => this.getDirSpan(d))}
-            {files.map(f => this.getFileSpan(f))}
+            {files.map(f => this.getFileSpan(f, true))}
           </div>
         )}
       </div>

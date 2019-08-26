@@ -132,7 +132,7 @@ class CMD extends React.Component {
             </span>
           </div>
           <div
-            className="cmd-content-container"
+            className="cmd-content-container scrollbar"
             onClick={async () => { this.inputRef.focus(); this.setState({ isFocus: true }); }}
             onBlur={async () => { this.setState({ isFocus: false }); }}
           >
