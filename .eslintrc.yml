@@ -16,6 +16,7 @@ rules: {
   react/jsx-filename-extension: off,
   react/forbid-prop-types: off,
   react/prefer-stateless-function: off,
+  react/jsx-props-no-spreading: off,
 }
 globals:
   window: readonly

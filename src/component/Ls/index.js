@@ -8,7 +8,6 @@ import { setDirectory } from '../../services/directory';
 require('numbermap')();
 
 class Ls extends React.Component {
-
   constructor(props) {
     super(props);
     const nbElement = props.dirs.length + props.files.length;
@@ -106,11 +105,11 @@ class Ls extends React.Component {
             ))}
           </div>
         ) : (
-            <div className={style['pocket-container']}>
-              {dirs.map(d => this.getDirSpan(d))}
-              {files.map(f => this.getFileSpan(f))}
-            </div>
-          )}
+          <div className={style['pocket-container']}>
+            {dirs.map(d => this.getDirSpan(d))}
+            {files.map(f => this.getFileSpan(f))}
+          </div>
+        )}
       </div>
     );
   }

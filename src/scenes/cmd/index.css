@@ -34,7 +34,7 @@
 .cmd-container {
     display:inline-block;
     height: var(--cmd-height);
-    margin: calc(calc(100vh - var(--cmd-height)) / 2) 0;
+    margin-top: calc(calc(100vh - var(--cmd-height)) / 2);
     width: var(--cmd-width);
     vertical-align: middle;
     position: relative;
@@ -181,4 +181,10 @@
 .input-carret-focus-typing  {
     border: solid var(--cmd-content-color) 1px;
     background-color: var(--cmd-content-color);
+}
+
+.cmd-shortcut {
+    height: calc(calc(100vh - var(--cmd-height)) / 2);
+    width: var(--cmd-width);
+    display:inline-block;
 }

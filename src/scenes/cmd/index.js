@@ -7,6 +7,7 @@ import cl from 'classnames';
 import { getDirectory } from '../../services/directory';
 import { getCmdError } from '../../services/cmdTools';
 import commands from '../../services/commands';
+import CmdShortcut from '../../component/CmdShortcut';
 
 let unique = 0;
 
@@ -66,11 +67,8 @@ class CMD extends React.Component {
     }
   }
 
-  handleCmd = async e => {
-    e.preventDefault();
+  handleCmd = async input => {
     const oldPrompt = this.getPrompt();
-    const { input } = this.state;
-    this.setState({ input: '' });
     await this.addToStack((
       <div>
         {oldPrompt}
@@ -79,7 +77,14 @@ class CMD extends React.Component {
       </div>
     ));
     if (!input || input.length === 0) return;
-    await this.executeCmd(input);
+    await this.executeCmd(input.toLowerCase());
+  }
+
+  handleCmdEvent = async e => {
+    e.preventDefault();
+    const { input } = this.state;
+    this.setState({ input: '' });
+    await this.handleCmd(input);
     this.setState({ input: '' });
   }
 
@@ -109,7 +114,7 @@ class CMD extends React.Component {
             <div className="cmd-content cmd-content-first">
               {this.getPrompt()}
               &nbsp;
-              <form onSubmit={this.handleCmd} className="input-form">
+              <form onSubmit={this.handleCmdEvent} className="input-form">
                 <AutosizeInput
                   ref={ref => { this.inputRef = ref; }}
                   inputClassName="cmd-input"
@@ -122,6 +127,7 @@ class CMD extends React.Component {
             {stack}
           </div>
         </div>
+          <CmdShortcut className="cmd-shortcut" handleCmd={this.handleCmd} />
       </div>
     );
   }

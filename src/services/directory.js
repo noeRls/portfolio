@@ -158,12 +158,17 @@ function getPath(path, allowFile) {
   path = path.split('/');
   let tmpDir = currentDir;
   for (let i = 0; i < path.length; i += 1) {
-    tmpDir = cdone(path[i], tmpDir);
-    if (!tmpDir) {
-      if (path[i].files && allowFile) {
-        return path[i].files.find(f => f.name === path[i]);
+    if (i === 0 && (path[i] === '~' || path[i] === '')) {
+      tmpDir = tree.root;
+      continue;
+    } else {
+      tmpDir = cdone(path[i], tmpDir);
+      if (!tmpDir) {
+        if (path[i].files && allowFile) {
+          return path[i].files.find(f => f.name === path[i]);
+        }
+        return null;
       }
-      return null;
     }
   }
   return tmpDir;
@@ -181,5 +186,5 @@ function cd(dir) {
 }
 
 export {
-  cd, getDirectory, getPath, setDirectory,
+  cd, getDirectory, getPath, setDirectory, tree,
 };
