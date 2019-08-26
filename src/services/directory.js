@@ -45,24 +45,23 @@ const tree = {
               {
                 name: 'Global game jam 2018',
                 desc: 'Create a video game in 48 hours on the \'transmission\' theme',
-                link: 'https://globalgamejam.org/2018/games/eternal-corridor'
+                link: 'https://globalgamejam.org/2018/games/eternal-corridor',
               },
               {
                 name: 'Google hash code 2018',
                 desc: 'Create a driving algorithm to spread rides (uber like)',
                 label: '379/6000 (world)',
-                link: 'https://github.com/Yooooomi/hascode_2018'
+                link: 'https://github.com/Yooooomi/hascode_2018',
               },
               { name: 'Battle dev 2018', desc: 'Developer competition', label: '269/3322 (france)' },
-              { name: 'Morpheus cup 2018' },
+              { name: 'Morpheus cup 2018', desc: 'A day of ideation' },
               {
                 name: 'Viva tech 2018',
                 desc: 'Idea to improve autonomous car. We imagined a connected windshild that communicate with pedestrian',
-                link: 'https://github.com/noeRls/windshield_connected'
+                link: 'https://github.com/noeRls/windshield_connected',
               },
               { name: 'Teamleader 2018', desc: 'Create and optimise a delivery algorithm', label: '2/50' },
-              { name: 'Crack the code get the job 2018' },
-              { name: 'Meilleur dev de france 2018', desc: 'Developer competition', label: '45/2000 (france)' },
+              { name: 'MDF 2018', desc: 'Meilleur developer de france', label: '45/2000 (france)' },
               { name: 'Battle dev 2018', desc: 'Developer competition', label: '405/3914 (france)' },
               {
                 name: 'Ai for a better world 2018',
@@ -71,6 +70,7 @@ const tree = {
                 Our idea was to use known position of coral to predict their possible position in unknown area.
                 Once corals have been localise we use them as medecine purpose`,
                 label: '1st price',
+                labelImportant: true,
               },
               {
                 name: 'Digital light 2019',
@@ -83,7 +83,7 @@ const tree = {
               { name: 'Viva tech 2019' },
             ],
           },
-        ]
+        ],
       },
       {
         name: 'skills',
@@ -136,6 +136,7 @@ const tree = {
             desc: 'Epitech is an informatic school known for it\'s innovative learning method. Master in Information of technology, certification level 1 (highest level)',
             label: '3.80 GPA',
             link: 'https://www.epitech.eu/',
+            labelImportant: true,
           },
           {
             name: 'Bac-Scientific',

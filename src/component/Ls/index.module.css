@@ -44,11 +44,11 @@
 .desc {
 	text-align: left;
 	color: var(--cmd-desc-color);
+	flex-grow: 1;
 }
 
 .label {
 	color: rgb(2, 185, 20);
-	flex-grow: 1;
 	text-align: right;
-	flex-basis: 200px;
+	flex-shrink: 0;
 }

@@ -84,7 +84,8 @@ class Ls extends React.Component {
             {[...dirs, ...files].map((info, i) => (
               <div
                 className={style.container}
-                key={info.name}
+                // eslint-disable-next-line react/no-array-index-key
+                key={`${info.name}_${i}`}
               >
                 <div
                   className={style.title}
@@ -97,7 +98,7 @@ class Ls extends React.Component {
                   {info.desc}
                 </div>
                 {Boolean(info.label) && (
-                  <div className={style.label}>
+                  <div className={style.label} style={{ fontWeight: info.labelImportant ? 'bold' : undefined }}>
                     {info.label}
                   </div>
                 )}
