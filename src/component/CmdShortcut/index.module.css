@@ -12,8 +12,9 @@
     padding: 5px 10px;
     color: var(--cmd-content-color);
     cursor: pointer;
-    transition-property: transform, max-width, padding;
+    transition-property: transform, max-width, padding, margin;
     transition-duration: 500ms;
+    margin: 0 10px;
 }
 
 .element-show {
@@ -26,6 +27,7 @@
     transform: scale(0);
     max-width: 0px;
     padding: 0px;
+    margin: 0px;
     animation-direction: reverse;
     animation-duration: 500ms;
     animation-fill-mode: forwards;

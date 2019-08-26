@@ -158,9 +158,8 @@ function getPath(path, allowFile) {
   path = path.split('/');
   let tmpDir = currentDir;
   for (let i = 0; i < path.length; i += 1) {
-    if (i === 0 && (path[i] === '~' || path[i] === '')) {
+    if (i === 0 && path[i] === '~') {
       tmpDir = tree.root;
-      continue;
     } else {
       tmpDir = cdone(path[i], tmpDir);
       if (!tmpDir) {
