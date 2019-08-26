@@ -158,6 +158,15 @@ const tree = {
             desc: 'Noe Rivals',
             link: 'https://www.linkedin.com/in/noe-rivals/',
           },
+          {
+            name: 'email',
+            desc: 'noe.rivals@gmail.com',
+            link: 'mailto:noe.rivaks@gmail.com',
+          },
+          {
+            name: 'hobies',
+            desc: 'Chess, Traveling, Video Games (LOL, RL, Smash, ...), TV Shows (GOT, Black mirror, ...).',
+          },
         ],
       },
     ],
