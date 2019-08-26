@@ -22,6 +22,31 @@ class CMD extends React.Component {
     };
   }
 
+  componentDidMount() {
+    // eslint-disable-next-line no-undef
+    document.addEventListener('keydown', this.keydownHandler);
+  }
+
+  componentWillUnmount() {
+    // eslint-disable-next-line no-undef
+    document.removeEventListener('keydown', this.keydownHandler);
+  }
+
+  keydownHandler = async e => {
+    if (e.ctrlKey) {
+      if (e.keyCode === 76) {
+        e.preventDefault();
+        await this.handleCmd('clear', '');
+      }
+      if (e.keyCode === 67) {
+        const { input } = this.state;
+        e.preventDefault();
+        this.handleCmd('', `${input}^C`);
+        this.setState({ input: '' });
+      }
+    }
+  }
+
   getCarpetClassName = () => {
     const { isFocus, typing } = this.state;
     let special = '';
@@ -67,13 +92,13 @@ class CMD extends React.Component {
     }
   }
 
-  handleCmd = async input => {
+  handleCmd = async (input, inputToDisplay = null) => {
     const oldPrompt = this.getPrompt();
     await this.addToStack((
       <div>
         {oldPrompt}
         &nbsp;
-        {input}
+        {inputToDisplay || input}
       </div>
     ));
     if (!input || input.length === 0) return;
@@ -127,7 +152,7 @@ class CMD extends React.Component {
             {stack}
           </div>
         </div>
-          <CmdShortcut className="cmd-shortcut" handleCmd={this.handleCmd} />
+        <CmdShortcut className="cmd-shortcut" handleCmd={this.handleCmd} />
       </div>
     );
   }

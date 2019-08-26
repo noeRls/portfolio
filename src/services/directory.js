@@ -37,21 +37,70 @@ const tree = {
             link: 'https://github.com/noeRls/Corewar',
           },
         ],
+        dirs: [
+          {
+            name: 'hackathons',
+            desc: 'list of hackathons I have participated',
+            files: [
+              {
+                name: 'Global game jam 2018',
+                desc: 'Create a video game in 48 hours on the \'transmission\' theme',
+                link: 'https://globalgamejam.org/2018/games/eternal-corridor'
+              },
+              {
+                name: 'Google hash code 2018',
+                desc: 'Create a driving algorithm to spread rides (uber like)',
+                label: '379/6000 (world)',
+                link: 'https://github.com/Yooooomi/hascode_2018'
+              },
+              { name: 'Battle dev 2018', desc: 'Developer competition', label: '269/3322 (france)' },
+              { name: 'Morpheus cup 2018' },
+              {
+                name: 'Viva tech 2018',
+                desc: 'Idea to improve autonomous car. We imagined a connected windshild that communicate with pedestrian',
+                link: 'https://github.com/noeRls/windshield_connected'
+              },
+              { name: 'Teamleader 2018', desc: 'Create and optimise a delivery algorithm', label: '2/50' },
+              { name: 'Crack the code get the job 2018' },
+              { name: 'Meilleur dev de france 2018', desc: 'Developer competition', label: '45/2000 (france)' },
+              { name: 'Battle dev 2018', desc: 'Developer competition', label: '405/3914 (france)' },
+              {
+                name: 'Ai for a better world 2018',
+                desc: `Find a way to use ai to make a better world. This hackathon lasts 3 month.
+                We were a team of 5, two biologist, one geologist, two developer including me.
+                Our idea was to use known position of coral to predict their possible position in unknown area.
+                Once corals have been localise we use them as medecine purpose`,
+                label: '1st price',
+              },
+              {
+                name: 'Digital light 2019',
+                desc: `Find an inovative way to use digital light on car.
+                Digital light is a technology used to display informations on the road throught light.
+                Our idea was to display a 3D grid to improve visibility of the road`,
+                label: 'finalist',
+              },
+              { name: 'Battle dev 2019', desc: 'Developer competition', label: '446/3000' },
+              { name: 'Viva tech 2019' },
+            ],
+          },
+        ]
       },
       {
         name: 'skills',
         desc: 'language and technology that I\'m mastering',
         files: [
-          { name: 'NodeJS' },
-          { name: 'ReactJS' },
-          { name: 'Python' },
-          { name: 'MongoDB' },
-          { name: 'Blockchain', desc: 'I\'m an ethereum enthusiastic' },
-          { name: 'Solidity' },
-          { name: 'C++' },
-          { name: 'C' },
-          { name: 'HTML5' },
-          { name: 'CSS' },
+          { name: 'NodeJS', desc: 'Expert' },
+          { name: 'ReactJS', desc: 'Advanced' },
+          { name: 'Python', desc: 'Advanced' },
+          { name: 'MongoDB', desc: 'Intermediate' },
+          { name: 'Blockchain', desc: 'Advanced' },
+          { name: 'Solidity', desc: 'Intermediate' },
+          { name: 'C++', desc: 'Advanced' },
+          { name: 'C', desc: 'Advenced' },
+          { name: 'HTML5', desc: 'Intermediate' },
+          { name: 'CSS', desc: 'Intermediate' },
+          { name: 'SQL', desc: 'Novice' },
+          { name: 'Unity3D(C#)', desc: 'Novice' },
         ],
       },
       {
@@ -104,7 +153,7 @@ const tree = {
             link: 'https://github.com/noeRls',
           },
           {
-            name: 'Linkedin',
+            name: 'linkedin',
             desc: 'Noe Rivals',
             link: 'https://www.linkedin.com/in/noe-rivals/',
           },
