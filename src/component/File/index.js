@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import style from './index.module.css';
 
 const File = props => {
-  const { file, removeSpaces, className, ...other } = props;
+  const {
+    file, removeSpaces, className, ...other
+  } = props;
   const name = removeSpaces ? file.name.replace(/ /g, '-') : file.name;
   if (file.link) {
     return (

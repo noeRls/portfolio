@@ -65,6 +65,10 @@
     .cmd {
         border-radius: 0px;
     }
+
+    .cmd-container {
+        transition-property: none;
+    }
 }
 
 .box {
@@ -221,4 +225,11 @@
     height: calc(calc(100vh - var(--cmd-height)) / 2);
     width: var(--cmd-width);
     display:inline-block;
+}
+
+@media screen and (max-width: 700px)
+{
+    .cmd-shortcut {
+        display: none;
+    }
 }
