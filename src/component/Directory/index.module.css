@@ -1,0 +1,8 @@
+.dir {
+	cursor: pointer;
+    color: rgb(78, 122, 209);
+}
+
+.dir:hover {
+    color: rgb(55, 98, 182);
+}

@@ -1,9 +1,10 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
-import cl from 'classnames';
 import style from './index.module.css';
-import { setDirectory } from '../../services/directory';
+import File from '../File';
+import Directory from '../Directory';
 
 require('numbermap')();
 
@@ -58,32 +59,6 @@ class Ls extends React.Component {
     this.setState({ titleWidth: width < 500 ? mean : maxTitleWidth });
   }
 
-  getDir = (d) => (
-    <div
-      onClick={() => setDirectory(d)}
-      className={cl(style.content, style.dir)}
-      key={d.name}
-    >
-      {d.name}
-    </div>
-  );
-
-  getFile = (f, removeSpaces) => {
-    const name = removeSpaces ? f.name.replace(/ /g, '-') : f.name;
-    if (f.link) {
-      return (
-        <a className={cl(style.content, style.file, style.link)} key={f.name} href={f.link} target="_blank" rel="noopener noreferrer">
-          {name}
-        </a>
-      );
-    }
-    return (
-      <span className={cl(style.content, style.file)} key={f.name}>
-        {name}
-      </span>
-    );
-  };
-
   render() {
     const { files, dirs, expanded } = this.props;
     const { titleWidth } = this.state;
@@ -107,7 +82,11 @@ class Ls extends React.Component {
                   ref={this.titlesRef[i]}
                   style={titleStyle}
                 >
-                  {info.file ? this.getFile(info) : this.getDir(info)}
+                  {info.file ? (
+                    <File className={style.content} file={info} />
+                  ) : (
+                    <Directory className={style.content} dir={info} />
+                  )}
                 </div>
                 <div className={style.desc}>
                   {info.desc}
@@ -122,8 +101,8 @@ class Ls extends React.Component {
           </div>
         ) : (
           <div className={style['pocket-container']}>
-            {dirs.map(d => this.getDir(d))}
-            {files.map(f => this.getFile(f, true))}
+            {dirs.map((d, i) => <Directory key={`${d.name}_${i}`} className={style.content} dir={d} />)}
+            {files.map((f, i) => <File key={`${f.name}_${i}`} className={style.content} file={f} removeSpaces />)}
           </div>
         )}
       </div>
