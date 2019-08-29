@@ -14,34 +14,6 @@
 	display: block;
 }
 
-.dir {
-	background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
-
-    color: rgb(78, 122, 209);
-}
-
-.dir:hover {
-    color: rgb(55, 98, 182);
-}
-
-.file {
-	color: #02c2c5;
-}
-
-.link {
-	text-decoration: none;
-}
-
-.link:hover {
-	color: #018285
-}
-
 .title {
 	text-align: right;
 }
