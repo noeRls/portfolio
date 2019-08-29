@@ -217,6 +217,8 @@ function getPath(path, allowFile) {
   path = path.split('/');
   let tmpDir = currentDir;
   for (let i = 0; i < path.length; i += 1) {
+    // eslint-disable-next-line no-continue
+    if (path[i] === '' && i !== 0) continue; // ex: projects/ => ['projects', '']
     if (i === 0 && path[i] === '~') {
       tmpDir = tree.root;
     } else {

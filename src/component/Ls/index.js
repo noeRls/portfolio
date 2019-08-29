@@ -55,7 +55,6 @@ class Ls extends React.Component {
       if (w > acc) return w;
       return acc;
     }, 0);
-
     this.setState({ titleWidth: width < 500 ? mean : maxTitleWidth });
   }
 
@@ -65,7 +64,7 @@ class Ls extends React.Component {
 
     let titleStyle = {};
     if (expanded && titleWidth !== 0) {
-      titleStyle = { width: titleWidth, flexShrink: 0 };
+      titleStyle = { width: titleWidth + 1, flexShrink: 0 };
     }
     return (
       <div>
