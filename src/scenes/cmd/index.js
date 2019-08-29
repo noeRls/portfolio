@@ -19,6 +19,8 @@ class CMD extends React.Component {
       isFocus: false,
       typing: false,
       stack: [],
+      wide: false,
+      shortcutExpanded: false,
     };
   }
 
@@ -113,13 +115,20 @@ class CMD extends React.Component {
     this.setState({ input: '' });
   }
 
+  toogleExpand = () => {
+    const { shortcutExpanded } = this.state;
+    this.setState({ shortcutExpanded: !shortcutExpanded });
+  }
+
   render() {
-    const { input, stack } = this.state;
+    const {
+      input, stack, wide, shortcutExpanded,
+    } = this.state;
     return (
       <div
-        className="background"
+        className="background main-container"
       >
-        <div className="cmd-container cmd">
+        <div className={cl('cmd-container cmd', wide && 'cmd-container-wide')}>
           <div className="cmd-top-container">
             <span className="box" />
             <span className="box">
@@ -127,8 +136,8 @@ class CMD extends React.Component {
             </span>
             <span className="box">
               <span className="cmd-button cmd-button-red" />
-              <span className="cmd-button cmd-button-orange" />
-              <span className="cmd-button cmd-button-green" />
+              <span className="cmd-button cmd-button-orange" onClick={async () => this.setState({ wide: !wide })} />
+              <span className="cmd-button cmd-button-green" onClick={this.toogleExpand} />
             </span>
           </div>
           <div
@@ -152,7 +161,12 @@ class CMD extends React.Component {
             {stack}
           </div>
         </div>
-        <CmdShortcut className="cmd-shortcut" handleCmd={this.handleCmd} />
+        <CmdShortcut
+          expanded={shortcutExpanded}
+          onExpand={this.toogleExpand}
+          className="cmd-shortcut"
+          handleCmd={this.handleCmd}
+        />
       </div>
     );
   }

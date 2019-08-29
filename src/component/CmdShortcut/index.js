@@ -22,25 +22,14 @@ addDirs(tree.root, '~');
 console.log(shortcuts);
 
 class CmdShortcut extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      expanded: false,
-    };
-  }
-
-  toogleExpand = () => {
-    const { expanded } = this.state;
-    this.setState({ expanded: !expanded });
-  }
-
   render() {
-    const { handleCmd, ...others } = this.props;
-    const { expanded } = this.state;
+    const {
+      handleCmd, expanded, onExpand, ...others
+    } = this.props;
     return (
       <div {...others}>
         <div className={s.container}>
-          <div className={s.element} onClick={this.toogleExpand}>
+          <div className={s.element} onClick={onExpand}>
             shortcuts
           </div>
           {shortcuts.map((short, i) => (
@@ -61,6 +50,8 @@ class CmdShortcut extends React.Component {
 
 CmdShortcut.propTypes = {
   handleCmd: PropTypes.func.isRequired,
+  expanded: PropTypes.bool.isRequired,
+  onExpand: PropTypes.func.isRequired,
 };
 
 export default CmdShortcut;

@@ -16,14 +16,15 @@ class Ls extends React.Component {
       console.log(this.titlesRef);
     }
     this.state = {
-      maxTitleWidth: 0,
+      titleWidth: 0,
+      width: 0,
     };
   }
 
   componentDidMount() {
     const { expanded } = this.props;
     if (expanded) {
-      this.updateTitleWidth();
+      this.onResize();
       window.addEventListener('resize', this.onResize.bind(this));
     }
   }
@@ -36,29 +37,38 @@ class Ls extends React.Component {
   }
 
   onResize = () => {
-    this.setState({ maxTitleWidth: 0 }, this.updateTitleWidth);
+    this.setState({ titleWidth: 0, width: window.innerWidth }, this.updateTitleWidth);
   }
 
   updateTitleWidth = () => {
+    const { width } = this.state;
+
+    const totalWidth = this.titlesRef.reduce((acc, ref) => {
+      const w = ref.current.offsetWidth;
+      return acc + w;
+    }, 0);
+    const mean = totalWidth / this.titlesRef.length;
+
     const maxTitleWidth = this.titlesRef.reduce((acc, ref) => {
       const w = ref.current.offsetWidth;
       if (w > acc) return w;
       return acc;
     }, 0);
-    this.setState({ maxTitleWidth });
+
+    this.setState({ titleWidth: width < 500 ? mean : maxTitleWidth });
   }
 
-  getDirSpan = (d) => (
-    <span
+  getDir = (d) => (
+    <div
       onClick={() => setDirectory(d)}
       className={cl(style.content, style.dir)}
       key={d.name}
     >
       {d.name}
-    </span>
+    </div>
   );
 
-  getFileSpan = (f, removeSpaces) => {
+  getFile = (f, removeSpaces) => {
     const name = removeSpaces ? f.name.replace(/ /g, '-') : f.name;
     if (f.link) {
       return (
@@ -76,8 +86,12 @@ class Ls extends React.Component {
 
   render() {
     const { files, dirs, expanded } = this.props;
-    const { maxTitleWidth } = this.state;
+    const { titleWidth } = this.state;
 
+    let titleStyle = {};
+    if (expanded && titleWidth !== 0) {
+      titleStyle = { width: titleWidth, flexShrink: 0 };
+    }
     return (
       <div>
         {expanded ? (
@@ -91,9 +105,9 @@ class Ls extends React.Component {
                 <div
                   className={style.title}
                   ref={this.titlesRef[i]}
-                  style={{ minWidth: maxTitleWidth }}
+                  style={titleStyle}
                 >
-                  {info.file ? this.getFileSpan(info) : this.getDirSpan(info)}
+                  {info.file ? this.getFile(info) : this.getDir(info)}
                 </div>
                 <div className={style.desc}>
                   {info.desc}
@@ -108,8 +122,8 @@ class Ls extends React.Component {
           </div>
         ) : (
           <div className={style['pocket-container']}>
-            {dirs.map(d => this.getDirSpan(d))}
-            {files.map(f => this.getFileSpan(f, true))}
+            {dirs.map(d => this.getDir(d))}
+            {files.map(f => this.getFile(f, true))}
           </div>
         )}
       </div>
