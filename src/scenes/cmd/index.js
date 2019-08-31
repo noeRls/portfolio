@@ -15,7 +15,7 @@ class CMD extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      input: 'cat experiances/PoC',
+      input: '',
       isFocus: false,
       typing: false,
       stack: [],
@@ -25,6 +25,7 @@ class CMD extends React.Component {
   }
 
   componentDidMount() {
+    window.handleCmd = this.handleCmd;
     // eslint-disable-next-line no-undef
     document.addEventListener('keydown', this.keydownHandler);
   }
@@ -105,6 +106,7 @@ class CMD extends React.Component {
     ));
     if (!input || input.length === 0) return;
     await this.executeCmd(input.toLowerCase());
+    this.forceUpdate(); // TODO implement redux for path
   }
 
   handleCmdEvent = async e => {

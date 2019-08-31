@@ -190,14 +190,25 @@ function findparent(base, child) {
   if (base.dirs.some(dir => dir === child)) return base;
   // eslint-disable-next-line
   for (let i = 0; i < base.dirs.length; i++) {
-    const parent = findparent(base.dirs[i]);
+    const parent = findparent(base.dirs[i], child);
     if (parent) return parent;
   }
   return null;
 }
 
+function getAbsolutePath(dir) {
+  let absPath = dir.name;
+  let parent = findparent(tree.root, dir);
+  while (parent) {
+    if (parent === dir) return absPath;
+    dir = parent;
+    absPath = `${dir.name}/${absPath}`;
+    parent = findparent(tree.root, dir);
+  }
+  return absPath;
+}
+
 const getDirectory = () => currentDir;
-const setDirectory = (dir) => { currentDir = dir; };
 
 function cdone(path, cdir) {
   if (path === '.') return cdir;
@@ -235,17 +246,27 @@ function getPath(path, allowFile) {
   return tmpDir;
 }
 
+let pastDir = null;
+
 function cd(dir) {
   if (!dir) {
     currentDir = tree.root;
     return null;
   }
+  if (dir === '-') {
+    if (!pastDir) return 'No old directory';
+    const tmpDir = pastDir;
+    pastDir = currentDir;
+    currentDir = tmpDir;
+    return null;
+  }
   const newDir = getPath(dir, false);
   if (!newDir) return `Invalid directory '${dir}'`;
+  pastDir = currentDir;
   currentDir = newDir;
   return null;
 }
 
 export {
-  cd, getDirectory, getPath, setDirectory, tree,
+  cd, getDirectory, getPath, tree, getAbsolutePath,
 };

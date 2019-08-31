@@ -4,13 +4,13 @@ import React from 'react';
 import cl from 'classnames';
 import PropTypes from 'prop-types';
 import style from './index.module.css';
-import { setDirectory } from '../../services/directory';
+import { getAbsolutePath } from '../../services/directory';
 
 const Directory = props => {
   const { className, dir, ...other } = props;
   return (
     <span
-      onClick={() => setDirectory(dir)}
+      onClick={() => window.handleCmd(`cd ${getAbsolutePath(dir)}`)}
       className={cl(style.dir, className)}
       {...other}
     >
