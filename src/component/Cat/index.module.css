@@ -1,0 +1,27 @@
+.container {
+    text-align: left;
+    text-transform: capitalize;
+    margin: 20px 0;
+}
+
+.name {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.footer {
+    margin-top: 10px;
+}
+
+.label {
+    font-style: italic;
+}
+
+.link {
+	color: #02c2c5;
+}
+
+.link:visited {
+	color: #018285;
+}

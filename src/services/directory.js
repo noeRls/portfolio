@@ -207,7 +207,7 @@ function cdone(path, cdir) {
     return parent;
   }
   if (!cdir.dirs) return null;
-  const newDir = cdir.dirs.find(d => d.name === path);
+  const newDir = cdir.dirs.find(d => d.name.toLowerCase() === path);
   if (!newDir) return null;
   return newDir;
 }
@@ -222,10 +222,11 @@ function getPath(path, allowFile) {
     if (i === 0 && path[i] === '~') {
       tmpDir = tree.root;
     } else {
+      const dirBcp = tmpDir;
       tmpDir = cdone(path[i], tmpDir);
       if (!tmpDir) {
-        if (path[i].files && allowFile) {
-          return path[i].files.find(f => f.name === path[i]);
+        if (dirBcp.files && allowFile) {
+          return dirBcp.files.find(f => f.name.toLowerCase() === path[i]);
         }
         return null;
       }
