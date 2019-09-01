@@ -22,6 +22,8 @@ class CMD extends React.Component {
       wide: false,
       shortcutExpanded: false,
     };
+    this.inputStackIdx = 0;
+    this.inputStack = [];
   }
 
   componentDidMount() {
@@ -33,6 +35,12 @@ class CMD extends React.Component {
   componentWillUnmount() {
     // eslint-disable-next-line no-undef
     document.removeEventListener('keydown', this.keydownHandler);
+  }
+
+  setInput = newInput => {
+    this.setState({ input: newInput }, () => {
+      setTimeout(() => this.inputRef.input.setSelectionRange(newInput.length, newInput.length), 0);
+    });
   }
 
   keydownHandler = async e => {
@@ -48,6 +56,18 @@ class CMD extends React.Component {
         this.setState({ input: '' });
       }
     }
+    if (e.keyCode === 38) { // arrow up
+      e.preventDefault();
+      if (this.inputStackIdx + 1 >= this.inputStack.length) return;
+      this.inputStackIdx += 1;
+      this.setInput(this.inputStack[this.inputStackIdx]);
+    }
+    if (e.keyCode === 40) { // arrow down
+      e.preventDefault();
+      if (this.inputStackIdx <= 0) return;
+      this.inputStackIdx -= 1;
+      this.setInput(this.inputStack[this.inputStackIdx]);
+    }
   }
 
   getCarpetClassName = () => {
@@ -62,7 +82,9 @@ class CMD extends React.Component {
   }
 
   inputOnChange = e => {
-    this.setState({ input: e.target.value, typing: true });
+    const input = e.target.value;
+    if (this.inputStackIdx === 0) this.inputStack[0] = input;
+    this.setState({ input, typing: true });
     if (this.typingTimeout) clearTimeout(this.typingTimeout);
     this.typingTimeout = setTimeout(() => this.setState({ typing: false }), 1000);
   }
@@ -104,7 +126,13 @@ class CMD extends React.Component {
         {inputToDisplay || input}
       </div>
     ));
+    this.inputStackIdx = 0;
     if (!input || input.length === 0) return;
+    if (inputToDisplay === null) {
+      // eslint-disable-next-line react/destructuring-assignment
+      this.inputStack.unshift(this.state.input);
+      this.inputStack[1] = input;
+    }
     await this.executeCmd(input.toLowerCase());
     this.forceUpdate(); // TODO implement redux for path
   }
@@ -114,6 +142,7 @@ class CMD extends React.Component {
     const { input } = this.state;
     this.setState({ input: '' });
     await this.handleCmd(input);
+    this.inputStack[0] = '';
     this.setState({ input: '' });
   }
 

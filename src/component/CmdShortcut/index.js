@@ -19,8 +19,6 @@ const addDirs = (base, path) => {
 addDirs(tree.root, '~');
 
 
-console.log(shortcuts);
-
 class CmdShortcut extends React.Component {
   render() {
     const {
