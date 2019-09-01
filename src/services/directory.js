@@ -175,7 +175,7 @@ const tree = {
 
 function addInfo(base) {
   const { files, dirs } = base;
-  if (files) files.forEach(f => { f.file = true; });
+  if (files) files.forEach(f => { f.file = true; f.name = f.name.replace(/ /g, '-'); });
   if (dirs) {
     dirs.forEach(d => { d.dir = true; addInfo(d); });
   }
