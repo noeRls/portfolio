@@ -8,7 +8,7 @@ const tree = {
         files: [
           {
             name: 'portfolio',
-            desc: 'this website',
+            desc: 'This website',
             link: 'https://noerls.com',
           },
           {
@@ -18,17 +18,17 @@ const tree = {
           },
           {
             name: 'authentication-template-NodeJS',
-            desc: 'Simple template to start a NodeJS backend project with Mongodb.',
+            desc: 'Simple template to start a NodeJS backend project with Mongodb',
             link: 'https://github.com/noeRls/Authentication-template-NodeJS',
           },
           {
             name: 'ethereum-wallet-seeker',
-            desc: 'seeker of ethereum wallet with ether',
+            desc: 'Seeker of ethereum wallet with ether',
             link: 'https://github.com/noeRls/ethereumWalletSeeker',
           },
           {
             name: 'uber-bot',
-            desc: 'Bot that analyse uber price to evaluate if there is a gap depending of gender and ethnic',
+            desc: 'Bot that analyse uber price to evaluate if there is a gap depending on gender and ethnic',
             link: 'https://github.com/noeRls/uber_bot',
           },
           {
@@ -53,30 +53,30 @@ const tree = {
                 label: '379/6000 (world)',
                 link: 'https://github.com/Yooooomi/hascode_2018',
               },
-              { name: 'Battle dev 2018', desc: 'Developer competition', label: '269/3322 (france)' },
+              { name: 'Battle dev 2018', desc: 'Developer competition', label: '269/3322 (France)' },
               { name: 'Morpheus cup 2018', desc: 'A day of ideation' },
               {
                 name: 'Viva tech 2018',
-                desc: 'Idea to improve autonomous car. We imagined a connected windshild that communicate with pedestrian',
+                desc: 'Idea to improve autonomous cars. We imagined a connected windshild that communicates with pedestrian',
                 link: 'https://github.com/noeRls/windshield_connected',
               },
               { name: 'Teamleader 2018', desc: 'Create and optimise a delivery algorithm', label: '2/50' },
-              { name: 'MDF 2018', desc: 'Meilleur developer de france', label: '45/2000 (france)' },
-              { name: 'Battle dev 2018', desc: 'Developer competition', label: '405/3914 (france)' },
+              { name: 'MDF 2018', desc: '"Meilleur developpeur de France"', label: '45/2000 (France)' },
+              { name: 'Battle dev 2018', desc: 'Developer competition', label: '405/3914 (France)' },
               {
-                name: 'Ai for a better world 2018',
-                desc: `Find a way to use ai to make a better world. This hackathon lasts 3 month.
-                We were a team of 5, two biologist, one geologist, two developer including me.
-                Our idea was to use known position of coral to predict their possible position in unknown area.
-                Once corals have been localise we use them as medecine purpose`,
+                name: 'AI for a better world 2018',
+                desc: `Find a way to use AI to make a better world. This hackathon lasts 3 months.
+                We were a team of 5, two biologists, one geologist, two developers including me.
+                Our idea was to use known positions of coral to predict their possible position in unknown areas.
+                Once corals have been localised we use them for medical purpose.`,
                 label: '1st price',
                 labelImportant: true,
               },
               {
                 name: 'Digital light 2019',
-                desc: `Find an inovative way to use digital light on car.
-                Digital light is a technology used to display informations on the road throught light.
-                Our idea was to display a 3D grid to improve visibility of the road`,
+                desc: `Find an innovative way to use digital light on car.
+                Digital light is a technology used to display informations on the road through light.
+                Our idea was to display a 3D grid to improve visibility of the road.`,
                 label: 'finalist',
               },
               { name: 'Battle dev 2019', desc: 'Developer competition', label: '446/3000' },
@@ -87,7 +87,7 @@ const tree = {
       },
       {
         name: 'skills',
-        desc: 'language and technology that I\'m mastering',
+        desc: 'Languages and technologies I\'m mastering',
         files: [
           { name: 'NodeJS', desc: 'Expert' },
           { name: 'ReactJS', desc: 'Advanced' },
@@ -100,22 +100,22 @@ const tree = {
           { name: 'HTML5', desc: 'Intermediate' },
           { name: 'CSS', desc: 'Intermediate' },
           { name: 'SQL', desc: 'Novice' },
-          { name: 'Unity3D(C#)', desc: 'Novice' },
+          { name: 'Unity3D (C#)', desc: 'Novice' },
         ],
       },
       {
         name: 'experiances',
-        desc: 'professional experiances',
+        desc: 'Professional experiences',
         files: [
           {
-            name: 'Skillz',
-            desc: 'I\'m working as a blockchain developer on a platform that auto deploy nodes in a consortium.',
+            name: 'SkillZ',
+            desc: 'I\'m working as a blockchain developer on a platform that auto deploys nodes in a consortium',
             label: 'june 2018 to now',
             link: 'http://skillz.io',
           },
           {
             name: 'PoC',
-            desc: 'I\'m a member at PoC. It is a research and development association. We work on domains like IA, AR, Health, Security, Blockchain.',
+            desc: 'I\'m a member at PoC. It is a research and development association. We work on domains like AI, AR, Health, Security, Blockchain',
             label: 'feb 2018 to now',
             link: 'https://www.linkedin.com/company/pocfr/about/',
           },
@@ -133,13 +133,13 @@ const tree = {
         files: [
           {
             name: 'Epitech',
-            desc: 'Epitech is an informatic school known for it\'s innovative learning method. Master in Information of technology, certification level 1 (highest level)',
+            desc: 'Epitech is an informatic school known for its innovative learning method. Master in Information of technology, certification level 1 (highest level)',
             label: '3.80 GPA',
             link: 'https://www.epitech.eu/',
             labelImportant: true,
           },
           {
-            name: 'Bac-Scientific',
+            name: 'Bac-Scientifique',
             label: 'Mention: \'Assez bien\'',
           },
         ],
@@ -165,7 +165,7 @@ const tree = {
           },
           {
             name: 'hobies',
-            desc: 'Chess, Traveling, Video Games (LOL, RL, Smash, ...), TV Shows (GOT, Black mirror, ...).',
+            desc: 'Chess, Traveling, Video Games (LOL, RL, Smash, ...), TV Shows (GOT, Black mirror, ...)',
           },
         ],
       },
