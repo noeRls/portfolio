@@ -20,6 +20,7 @@
 
 .desc {
 	text-align: left;
+	text-transform: capitalize;
 	color: var(--cmd-desc-color);
 	flex-grow: 1;
 }
