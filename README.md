@@ -2,7 +2,7 @@
 
 All my projects and infos in a terminal like website.
 
-If you're not a developer don't panic there's shortcuts below the terminal ;)
+If you're not a developer don't panic there are shortcuts below the terminal ;)
 
 [noerls.com](https://noerls.com)
 
