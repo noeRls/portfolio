@@ -55,6 +55,9 @@ class CMD extends React.Component {
         this.handleCmd('', `${input}^C`);
         this.setState({ input: '' });
       }
+      if (e.keyCode === 77) { // m
+        this.handleCmdEvent();
+      }
     }
     if (e.keyCode === 38) { // arrow up
       e.preventDefault();
@@ -138,7 +141,7 @@ class CMD extends React.Component {
   }
 
   handleCmdEvent = async e => {
-    e.preventDefault();
+    if (e) e.preventDefault();
     const { input } = this.state;
     this.setState({ input: '' });
     await this.handleCmd(input);
