@@ -104,7 +104,7 @@ const tree = {
         ],
       },
       {
-        name: 'experiances',
+        name: 'experiences',
         desc: 'Professional experiences',
         files: [
           {

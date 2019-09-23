@@ -162,6 +162,14 @@
     margin-top: 20px;
 }
 
+.cmd-title {
+    font-size: 1em;
+    font-weight: normal;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
 .cmd-input {
     border:none;
     background-image:none;

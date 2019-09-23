@@ -165,9 +165,9 @@ class CMD extends React.Component {
         <div className={cl('cmd-container cmd', wide && 'cmd-container-wide')}>
           <div className="cmd-top-container">
             <span className="box" />
-            <span className="box">
+            <h1 className="box cmd-title">
               Noe Rivals
-            </span>
+            </h1>
             <span className="box">
               <span className="cmd-button cmd-button-red" />
               <span className="cmd-button cmd-button-orange" onClick={async () => this.setState({ wide: !wide })} />
