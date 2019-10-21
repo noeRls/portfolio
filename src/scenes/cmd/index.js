@@ -30,6 +30,7 @@ class CMD extends React.Component {
     window.handleCmd = this.handleCmd;
     // eslint-disable-next-line no-undef
     document.addEventListener('keydown', this.keydownHandler);
+    this.handleCmd('cat presentation', null, false);
   }
 
   componentWillUnmount() {
@@ -120,15 +121,17 @@ class CMD extends React.Component {
     }
   }
 
-  handleCmd = async (input, inputToDisplay = null) => {
-    const oldPrompt = this.getPrompt();
-    await this.addToStack((
-      <div>
-        {oldPrompt}
-        &nbsp;
-        {inputToDisplay || input}
-      </div>
-    ));
+  handleCmd = async (input, inputToDisplay = null, displayPrompt = true) => {
+    if (displayPrompt) {
+      const oldPrompt = this.getPrompt();
+      await this.addToStack((
+        <div>
+          {oldPrompt}
+          &nbsp;
+          {inputToDisplay || input}
+        </div>
+      ));
+    }
     this.inputStackIdx = 0;
     if (!input || input.length === 0) return;
     if (inputToDisplay === null) {

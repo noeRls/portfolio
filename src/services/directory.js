@@ -1,6 +1,17 @@
 const tree = {
   root: {
     name: '~',
+    files: [
+      {
+        name: 'presentation',
+        desc: 'A quick presentation of this website',
+        cat: [
+          'Hi, welcome on my website !',
+          "If you're a developer you should feel comfortable with this terminal, you can of course refer to the famous 'help' command.",
+          "Otherwise you're thinking that you are on an other weird developer's website but look what's under the terminal, shortcuts! Click on it it will be amazing.",
+        ],
+      },
+    ],
     dirs: [
       {
         name: 'projects',
