@@ -1,19 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cl from 'classnames';
 import s from './index.module.css';
 
 const Cat = props => {
   const {
     desc, name, cat, label, link,
   } = props;
+  const isCat = Boolean(cat);
   return (
     <div className={s.container}>
-      <div className={s.name}>
+      <div className={cl(s.name, s.capitalize)}>
         {name}
       </div>
-      {Boolean(cat || desc) && (
+      {Boolean(isCat) && (
         <div>
-          {cat || desc}
+          {cat.map(c => (
+            <div key={c}>
+              {c}
+            </div>
+          ))}
+        </div>
+      )}
+      {Boolean(!isCat && desc) && (
+        <div>
+          {desc}
         </div>
       )}
       <div className={s.footer}>
@@ -35,7 +46,7 @@ const Cat = props => {
 Cat.propTypes = {
   desc: PropTypes.string,
   name: PropTypes.string.isRequired,
-  cat: PropTypes.string,
+  cat: PropTypes.arrayOf(PropTypes.string),
   label: PropTypes.string,
   link: PropTypes.string,
 };

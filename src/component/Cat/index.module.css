@@ -1,7 +1,10 @@
 .container {
     text-align: left;
-    text-transform: capitalize;
     margin: 20px 0;
+}
+
+.capitalize {
+    text-transform: capitalize;
 }
 
 .name {
